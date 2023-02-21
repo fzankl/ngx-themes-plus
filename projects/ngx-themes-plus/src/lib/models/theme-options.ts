@@ -27,7 +27,7 @@ export class ThemeOptions {
   public themes: string[] = ['light', 'dark'];
 
   /**
-   * Default theme name (for v0.0.12 and lower the default was light).
+   * Default theme name.
    * If enableSystem is false, the default theme is light
    */
   public defaultTheme: string = this.enableSystem ? 'system' : 'light';
