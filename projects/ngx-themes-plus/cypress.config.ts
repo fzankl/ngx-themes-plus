@@ -13,12 +13,13 @@ export default defineConfig({
           root: '',
           sourceRoot: 'src',
           buildOptions: {
-            tsConfig: 'tsconfig.lib.json'
+            tsConfig: 'cypress/tsconfig.json'
           },
         },
-      },
+      }
     },
     specPattern: '**/*.cy.ts',
-    video: false
+    video: false,
+    screenshotOnRunFailure: false
   }
 })

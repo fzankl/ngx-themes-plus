@@ -2,7 +2,7 @@
 
 ![Version](https://img.shields.io/npm/v/ngx-themes-plus.svg?colorB=green)
 
-An abstraction for themes in your Angular app.
+Theme support in your Angular app.
 
 - ✅ Perfect dark mode in 2 lines of code
 - ✅ Support for additional customized themes
@@ -13,7 +13,7 @@ An abstraction for themes in your Angular app.
 - ✅ Force pages to specific themes
 - ✅ Class or data attribute selector
 
-Check out the [Live Example](https://next-themes-example.vercel.app/) to try it for yourself.
+Check out the [Live Example](LINK) to try it for yourself.
 
 ## Install
 

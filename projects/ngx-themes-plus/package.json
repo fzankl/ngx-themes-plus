@@ -1,9 +1,26 @@
 {
   "name": "ngx-themes-plus",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Theme support in your Angular app.",
+  "keywords": [
+    "themes",
+    "styles",
+    "dark mode",
+    "color scheme"
+  ],
+  "author": "Fabian Zankl",
+  "license": "MIT",
+  "homepage": "https://github.com/fzankl/ngx-themes-plus#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fzankl/ngx-themes-plus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fzankl/ngx-themes-plus/issues"
+  },
   "peerDependencies": {
-    "@angular/common": "^15.1.5",
-    "@angular/core": "^15.1.5"
+    "@angular/core": ">=15.0.3",
+    "rxjs": "^6.5.3 || ^7.4.0"
   },
   "dependencies": {
     "tslib": "^2.5.0"

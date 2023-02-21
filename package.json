@@ -1,16 +1,15 @@
 {
   "name": "ngx-themes-plus",
-  "version": "0.1.0",
-  "description": "An abstraction for themes in your Angular app.",
+  "version": "1.0.0",
+  "description": "Theme support in your Angular app.",
   "keywords": [
     "themes",
-    "dark mode"
+    "styles",
+    "dark mode",
+    "color scheme"
   ],
   "author": "Fabian Zankl",
   "license": "MIT",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "clean": "rimraf dist",
     "start": "run-p lib:watch showcase:start-waiton",
@@ -35,36 +34,37 @@
   "bugs": {
     "url": "https://github.com/fzankl/ngx-themes-plus/issues"
   },
+  "private": true,
   "dependencies": {
-    "@angular/animations": "^15.1.5",
-    "@angular/common": "^15.1.5",
-    "@angular/compiler": "^15.1.5",
-    "@angular/core": "^15.1.5",
-    "@angular/platform-browser": "^15.1.5",
-    "@angular/platform-browser-dynamic": "^15.1.5",
-    "@angular/router": "^15.1.5",
+    "@angular/animations": "^15.0.3",
+    "@angular/common": "^15.0.3",
+    "@angular/compiler": "^15.0.3",
+    "@angular/core": "^15.0.3",
+    "@angular/platform-browser": "^15.0.3",
+    "@angular/platform-browser-dynamic": "^15.0.3",
+    "@angular/router": "^15.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.5.0",
-    "zone.js": "~0.12.0"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^15.1.6",
-    "@angular-eslint/builder": "15.2.1",
-    "@angular-eslint/eslint-plugin": "15.2.1",
-    "@angular-eslint/eslint-plugin-template": "15.2.1",
-    "@angular-eslint/schematics": "15.2.1",
-    "@angular-eslint/template-parser": "15.2.1",
-    "@angular/cli": "~15.1.6",
-    "@angular/compiler-cli": "^15.1.5",
+    "@angular-devkit/build-angular": "^15.0.3",
+    "@angular-eslint/builder": "14.0.4",
+    "@angular-eslint/eslint-plugin": "14.0.4",
+    "@angular-eslint/eslint-plugin-template": "14.0.4",
+    "@angular-eslint/schematics": "14.0.4",
+    "@angular-eslint/template-parser": "14.0.4",
+    "@angular/cli": "^15.0.3",
+    "@angular/compiler-cli": "^15.0.3",
     "@cypress/schematic": "^2.5.0",
     "@typescript-eslint/eslint-plugin": "5.53.0",
     "@typescript-eslint/parser": "5.53.0",
     "cypress": "^12.6.0",
     "eslint": "^8.34.0",
-    "ng-packagr": "^15.1.2",
+    "ng-packagr": "^14.0.3",
     "npm-run-all": "^4.1.5",
     "rimraf": "^4.1.2",
-    "typescript": "~4.9.5",
+    "typescript": "~4.8.4",
     "wait-on": "^7.0.1"
   }
 }

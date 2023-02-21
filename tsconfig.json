@@ -21,9 +21,9 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2022",
-    "module": "esnext",
+    "module": "es2022",
     "lib": [
-      "es2020",
+      "es2022",
       "dom"
     ]
   },
