@@ -1,0 +1,16 @@
+<theme-provider [forcedTheme]="forcedTheme">
+  <div class="wrapper">
+    <nav>
+      <div class="menu">
+        <a [routerLink]="['/']">Default</a>
+        <a [routerLink]="['forced']">Forced</a>
+      </div>
+
+      <theme-switcher></theme-switcher>
+    </nav>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</theme-provider>

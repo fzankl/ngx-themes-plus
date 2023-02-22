@@ -1,0 +1,59 @@
+name: Build library
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  library:
+    name: Build and test library
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies 🔧
+        run: npm ci
+      - name: Build library 🔧
+        run: npm run lib:build
+      - name: Test library 🧪
+        run: npm run test
+      - name: Upload artifact 📦
+        uses: actions/upload-artifact@master
+        with:
+          name: library
+          path: dist/ngx-themes-plus
+  showcase:
+    name: Build and publish showcase
+    needs: library
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies 🔧
+        run: npm ci
+      - name: Use artifact 📦
+        uses: actions/download-artifact@master
+        with:
+          name: library
+          path: dist/ngx-themes-plus
+      - name: Build showcase 🔧
+        run: npm run showcase:build
+      - name: Deploy showcase 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/showcase
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages

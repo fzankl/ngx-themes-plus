@@ -1,0 +1,50 @@
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.ease-in {
+  transition-timing-function: cubic-bezier(.4,0,1,1);
+}
+.duration-150 {
+  transition-duration: .15s;
+}
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: .15s;
+}
+
+.rounded-sm {
+  border-radius: .125rem;
+}
+
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.w-12 {
+  width: 3rem;
+}
+.h-12 {
+  height: 3rem;
+}
+
+.bg-transparent {
+  background: transparent;
+}
+
+[role=button], button {
+  cursor: pointer;
+  border: 0;
+  margin: auto;
+}
+
+button:disabled,
+button[disabled]{
+  cursor: not-allowed;
+}

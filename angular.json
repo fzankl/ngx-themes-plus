@@ -1,0 +1,137 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ngx-themes-plus": {
+      "projectType": "library",
+      "root": "projects/ngx-themes-plus",
+      "sourceRoot": "projects/ngx-themes-plus/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-themes-plus/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-themes-plus/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-themes-plus/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-themes-plus/**/*.ts",
+              "projects/ngx-themes-plus/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": false,
+            "headless": true,
+            "project": "projects/ngx-themes-plus",
+            "configFile": "cypress.config.ts",
+            "testingType": "component"
+          }
+        }
+      }
+    },
+    "showcase": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/showcase",
+      "sourceRoot": "projects/showcase/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/showcase",
+            "index": "projects/showcase/src/index.html",
+            "main": "projects/showcase/src/main.ts",
+            "polyfills": "projects/showcase/src/polyfills.ts",
+            "tsConfig": "projects/showcase/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/showcase/src/favicon.ico",
+              "projects/showcase/src/assets"
+            ],
+            "styles": [
+              "projects/showcase/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/showcase/src/environments/environment.ts",
+                  "with": "projects/showcase/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "showcase:build:production"
+            },
+            "development": {
+              "browserTarget": "showcase:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/showcase/**/*.ts",
+              "projects/showcase/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}
