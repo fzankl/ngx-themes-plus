@@ -76,13 +76,21 @@ ngx-themes-plus supports switching themes using the integrated `theme-switcher` 
 
 ### Force theme
 
+Forced theme is the right option if you like to present a page using a specific theme only. Switching themes does not have an effect.
+
+To force a theme on your Angular pages, simply inject the `ThemeProviderComponent` via the constructor an set the theme you like. Integrated `theme-switcher` is disabled in this case.
+
 ```js
 @Component({
   selector: 'app-page-forced'
 })
-export class ForcedPageComponent {
-  constructor(themeProvider: ThemeProviderComponent) {
-    themeProvider.forcedTheme = 'dark';
+export class ForcedPageComponent implements OnDestroy {
+  constructor(private readonly themeProvider: ThemeProviderComponent) {
+    this.themeProvider.forcedTheme = 'dark';
+  }
+
+  public ngOnDestroy(): void {
+    this.themeProvider.forcedTheme = '';
   }
 }
 ```
