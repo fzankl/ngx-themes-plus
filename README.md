@@ -15,7 +15,7 @@ Theme support in your Angular app.
 - ✅ Force pages to specific themes
 - ✅ Class or data attribute selector
 
-Check out the [Live Example](LINK) to try it for yourself.
+Check out the [Live Example](https://fzankl.github.io/ngx-themes-plus/) to try it for yourself.
 
 ## Install
 
