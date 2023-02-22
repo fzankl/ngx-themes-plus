@@ -3,10 +3,9 @@ on:
   push:
     branches:
       - main
-      - initial
   pull_request:
     branches:
-      - main1
+      - main
 jobs:
   library:
     name: Build and test library

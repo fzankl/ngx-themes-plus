@@ -1,21 +1,24 @@
-name: Build and Publish plugin
+name: Publish library
 on:
   release:
     types: [published]
 jobs:
-  build:
+  library:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Install dependencies and build 🔧
+      - name: Install dependencies 🔧
         run: npm ci
+      - name: Build library 🔧
+        run: npm run lib:build
       - name: Publish on NPM 📦
         run: npm publish
+        working-directory: dist/ngx-themes-plus
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
