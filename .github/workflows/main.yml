@@ -9,6 +9,7 @@ on:
       - main1
 jobs:
   build_library:
+    name: Build and test library
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,11 +25,30 @@ jobs:
         run: npm run lib:build
       - name: Test library 🧪
         run: npm run test
+      - uses: actions/upload-artifact@master
+        with:
+          name: library
+          path: dist/ngx-themes-plus
   build_showcase:
+    name: Build and publish showcase
     needs: build_library
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies 🔧
+        run: npm ci
+      - name: Use library
+        uses: actions/download-artifact@master
+        with:
+          name: library
+          path: dist/ngx-themes-plus
       - name: Build showcase
         run: npm run showcase:build
       - name: Deploy showcase 🚀
