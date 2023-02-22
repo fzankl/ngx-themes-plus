@@ -1,6 +1,8 @@
 # ngx-themes-plus
 
+[![Build Status](https://github.com/fzankl/ngx-themes-plus/actions/workflows/main.yml/badge.svg)](https://github.com/fzankl/ngx-themes-plus)
 ![Version](https://img.shields.io/npm/v/ngx-themes-plus.svg?colorB=green)
+[![npm Downloads](https://img.shields.io/npm/dt/ngx-themes-plus.svg)](https://www.npmjs.com/package/ngx-themes-plus)
 
 Theme support in your Angular app.
 

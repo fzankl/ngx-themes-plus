@@ -3,11 +3,12 @@ on:
   push:
     branches:
       - main
+      - initial
   pull_request:
     branches:
-      - main
+      - main1
 jobs:
-  build:
+  build_library:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,7 +18,22 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Install dependencies and build library 🔧
+      - name: Install dependencies 🔧
         run: npm ci
+      - name: Build library 🔧
+        run: npm run lib:build
       - name: Test library 🧪
         run: npm run test
+  build_showcase:
+    needs: build_library
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build showcase
+        run: npm run showcase:build
+      - name: Deploy showcase 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/showcase
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
