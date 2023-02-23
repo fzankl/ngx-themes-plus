@@ -30,6 +30,7 @@
 .w-12 {
   width: 3rem;
 }
+
 .h-12 {
   height: 3rem;
 }
@@ -42,6 +43,10 @@
   cursor: pointer;
   border: 0;
   margin: auto;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 button:disabled,

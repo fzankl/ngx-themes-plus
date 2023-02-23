@@ -51,6 +51,11 @@ jobs:
           path: dist/ngx-themes-plus
       - name: Build showcase 🔧
         run: npm run showcase:build
+      - name: Workaround for GitHub Pages
+        uses: canastro/copy-file-action@master
+        with:
+          source: "dist/showcase/index.html"
+          target: "dist/showcase/404.html"
       - name: Deploy showcase 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
