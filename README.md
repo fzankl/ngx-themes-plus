@@ -1,10 +1,19 @@
-# ngx-themes-plus
+<div align="center">
+  <img src="./assets/logo_dark.svg#gh-dark-mode-only" alt="ngx-themes-plus logo" title="ngx-themes-plus" style="max-height: 175px;" />
+  <img src="./assets/logo_light.svg#gh-light-mode-only" alt="ngx-themes-plus logo" title="ngx-themes-plus" style="max-height: 175px;" />
+  <p>Perfect Angular theme support in two lines of code.<br/>Support system preferences and any other themes. Integrated theme switcher.</p>
+</div>
+
+<div align="center">
 
 [![Build Status](https://github.com/fzankl/ngx-themes-plus/actions/workflows/main.yml/badge.svg)](https://github.com/fzankl/ngx-themes-plus)
 ![Version](https://img.shields.io/npm/v/ngx-themes-plus.svg?colorB=green)
 [![npm Downloads](https://img.shields.io/npm/dt/ngx-themes-plus.svg)](https://www.npmjs.com/package/ngx-themes-plus)
 
-Theme support in your Angular app.
+**⭐ Star the project on GitHub — it motivates a lot!**
+</div>
+
+## Features
 
 - ✅ Perfect dark mode in 2 lines of code
 - ✅ Support for additional customized themes
