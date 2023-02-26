@@ -27,10 +27,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/ngx-themes-plus/**/*.ts",
-              "projects/ngx-themes-plus/**/*.html"
-            ]
+            "lintFilePatterns": ["projects/ngx-themes-plus/**/*.ts", "projects/ngx-themes-plus/**/*.html"]
           }
         },
         "test": {
@@ -65,13 +62,8 @@
             "polyfills": "projects/showcase/src/polyfills.ts",
             "tsConfig": "projects/showcase/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/showcase/src/favicon.ico",
-              "projects/showcase/src/assets"
-            ],
-            "styles": [
-              "projects/showcase/src/styles.scss"
-            ],
+            "assets": ["projects/showcase/src/favicon.ico", "projects/showcase/src/assets"],
+            "styles": ["projects/showcase/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -122,10 +114,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/showcase/**/*.ts",
-              "projects/showcase/**/*.html"
-            ]
+            "lintFilePatterns": ["projects/showcase/**/*.ts", "projects/showcase/**/*.html"]
           }
         }
       }

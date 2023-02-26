@@ -1,8 +1,8 @@
-import { MountConfig } from 'cypress/angular'
+import { MountConfig } from 'cypress/angular';
 
-import { ThemeOptions } from '../../models'
-import { LocalStorageReferenceService, LocalStorageService } from '../../services'
-import { ThemeProviderComponent } from './theme-provider.component'
+import { ThemeOptions } from '../../models';
+import { LocalStorageReferenceService, LocalStorageService } from '../../services';
+import { ThemeProviderComponent } from './theme-provider.component';
 
 describe('ThemeProviderComponent', () => {
   const themeOptions = new ThemeOptions();

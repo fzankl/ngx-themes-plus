@@ -1,35 +1,147 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": ["node_modules/"],
+  "plugins": ["html"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
         "project": [
-          "tsconfig.json"
+          "tsconfig.json",
+          "projects/ngx-themes-plus/cypress/tsconfig.json",
+          "projects/ngx-themes-plus/tsconfig.lib.json",
+          "projects/showcase/tsconfig.app.json"
         ],
         "createDefaultProgram": true
       },
       "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "prettier"
       ],
       "rules": {
-        "@angular-eslint/directive-selector": "off",
-        "@angular-eslint/component-selector": "off"
+        "@typescript-eslint/lines-between-class-members": [
+          "error",
+          {
+            "exceptAfterSingleLine": true
+          }
+        ],
+        "no-useless-constructor": "off",
+        "@typescript-eslint/no-useless-constructor": ["error"],
+        "no-empty-function": "off",
+        "@typescript-eslint/no-empty-function": ["error"],
+        "no-unused-vars": "off",
+        "@typescript-eslint/ban-ts-comment": ["off"],
+        "@typescript-eslint/no-unused-vars": ["error"],
+        "@typescript-eslint/no-explicit-any": ["error"],
+        "@typescript-eslint/explicit-function-return-type": [
+          "error",
+          {
+            "allowExpressions": true
+          }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "explicit",
+            "overrides": {
+              "constructors": "off"
+            }
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "",
+            "style": "kebab-case"
+          }
+        ],
+        "@typescript-eslint/member-ordering": [
+          "error",
+          {
+            "default": [
+              "signature",
+              "public-static-field",
+              "protected-static-field",
+              "private-static-field",
+              "public-decorated-field",
+              "protected-decorated-field",
+              "private-decorated-field",
+              "public-instance-field",
+              "protected-instance-field",
+              "private-instance-field",
+              "public-abstract-field",
+              "protected-abstract-field",
+              "public-field",
+              "protected-field",
+              "private-field",
+              "static-field",
+              "instance-field",
+              "abstract-field",
+              "decorated-field",
+              "field",
+              "public-constructor",
+              "protected-constructor",
+              "private-constructor",
+              "constructor",
+              "public-static-method",
+              "protected-static-method",
+              "private-static-method",
+              "public-decorated-method",
+              "protected-decorated-method",
+              "private-decorated-method",
+              "public-instance-method",
+              "protected-instance-method",
+              "private-instance-method",
+              "public-abstract-method",
+              "protected-abstract-method",
+              "public-method",
+              "protected-method",
+              "private-method",
+              "static-method",
+              "instance-method",
+              "abstract-method",
+              "decorated-method",
+              "method"
+            ]
+          }
+        ]
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
+      "files": ["*cy.ts", "**/cypress/support/component.ts"],
+      "parserOptions": {
+        "project": ["projects/ngx-themes-plus/cypress/tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "rules": {
+        "@typescript-eslint/no-namespace": ["off"],
+        "@typescript-eslint/no-unsafe-assignment": ["off"],
+        "@typescript-eslint/no-unsafe-call": ["off"],
+        "@typescript-eslint/no-unsafe-member-access": ["off"]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "parser": "@angular-eslint/template-parser",
+      "parserOptions": {
+        "project": ["tsconfig.json", "projects/ngx-themes-plus/tsconfig.lib.json", "projects/showcase/tsconfig.app.json"],
+        "createDefaultProgram": true
+      },
+      "extends": ["prettier"],
+      "plugins": ["@angular-eslint/template"],
       "rules": {}
     }
   ]

@@ -14,7 +14,8 @@ export class ThemeDirective implements OnInit, OnDestroy {
   constructor(
     private readonly themeProvider: ThemeProviderComponent,
     private readonly viewContainerRef: ViewContainerRef,
-    private readonly templateRef: TemplateRef<HTMLElement>) {}
+    private readonly templateRef: TemplateRef<HTMLElement>
+  ) {}
 
   @Input()
   public set ngxThemesPlusOnly(value: string | string[]) {
@@ -77,13 +78,13 @@ export class ThemeDirective implements OnInit, OnDestroy {
 
   private transformStringToArray(value: string | string[]): string[] {
     if (this.isString(value)) {
-        return [value];
+      return [value];
     }
 
     return value;
   }
 
-  private isString(value: any): value is string {
+  private isString(value: string | string[]): value is string {
     return !!value && typeof value === 'string';
   }
 }

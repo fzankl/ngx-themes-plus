@@ -7,7 +7,5 @@
     "inlineSources": true,
     "types": []
   },
-  "exclude": [
-    "**/*.cy.ts"
-  ]
+  "exclude": ["**/*.cy.ts"]
 }

@@ -1,0 +1,19 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier", "stylelint-config-recommended-scss"],
+  "plugins": ["stylelint-scss", "stylelint-order"],
+  "rules": {
+    "order/properties-alphabetical-order": true,
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "scss/at-import-no-partial-leading-underscore": null,
+    "scss/at-import-partial-extension": null,
+    "scss/no-global-function-names": null,
+    "import-notation": "string",
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": ["box-shadow", "transition", "transform"]
+      }
+    ]
+  }
+}

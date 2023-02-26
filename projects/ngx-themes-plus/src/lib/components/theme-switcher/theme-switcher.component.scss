@@ -1,22 +1,22 @@
-$gray: #CECECE;
-$white: #FFFFFF;
+$gray: #cecece;
+$white: #fff;
 
 :host {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
   position: relative;
 }
 
 button {
-  cursor: pointer;
+  background: transparent;
   border: 0;
+  cursor: pointer;
+  height: 1.7rem;
   margin: auto;
   padding: 0;
-  width: 1.7rem;
-  height: 1.7rem;
-  background: transparent;
   -webkit-tap-highlight-color: transparent;
+  width: 1.7rem;
 
   &:disabled,
   [disabled] {
@@ -25,52 +25,52 @@ button {
 }
 
 .theme-selector {
-  position: absolute;
+  background-color: $white;
+  border: 1px solid $gray;
+  border-radius: 8px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  visibility: collapse;
+  left: 50%;
   opacity: 0;
   padding: 10px;
-  width: 90px;
-  background-color: $white;
-  transition: all 0.25s cubic-bezier(0, 0, 0.2, 1);
-  border: 1px solid $gray;
-  border-radius: 8px;
-  z-index: 4;
+  position: absolute;
   top: calc(100% + 1.7rem + 0.3rem);
-  left: 50%;
   transform: translate3d(-50%, -15px, 0);
+  transition: all 0.25s cubic-bezier(0, 0, 0.2, 1);
+  visibility: collapse;
+  width: 90px;
+  z-index: 4;
 
-  &:after {
+  &::after {
+    border-color: transparent transparent $white transparent;
+    border-style: solid;
+    border-width: 0 0.5em 0.5em;
     content: "";
     display: block;
-    width: 0;
+    filter: drop-shadow(1px 2px 1px $gray);
+    filter: drop-shadow(1px -1px 1px $gray);
     height: 0;
+    left: 50%;
     position: absolute;
     top: -0.5em;
-    left: 50%;
     transform: translate3d(-50%, 0, 0);
-    border-style: solid;
-    border-width: 0 0.5em 0.5em 0.5em;
-    border-color: transparent transparent $white transparent;
-    -webkit-filter: drop-shadow(1px 2px 1px $gray);
-    filter: drop-shadow(1px -1px 1px $gray);
+    width: 0;
   }
 
   &.visible {
-    visibility: visible;
     opacity: 1;
+    visibility: visible;
   }
 }
 
 .theme-selector-button {
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 100%;
-  border: 1px solid $gray;
   background-color: var(--theme);
-  display: inline-block;
+  border: 1px solid $gray;
+  border-radius: 100%;
   cursor: pointer;
+  display: inline-block;
+  height: 1.2rem;
   margin: 4px;
+  width: 1.2rem;
 }
