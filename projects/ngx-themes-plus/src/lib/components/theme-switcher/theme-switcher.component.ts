@@ -13,7 +13,8 @@ export class ThemeSwitcherComponent {
   protected hasDefaultThemesOnly = true;
 
   constructor(private readonly themeProvider: ThemeProviderComponent, private readonly themeOptions: ThemeOptions) {
-    this.hasDefaultThemesOnly = this.themeOptions.themes.length === 2 && this.themeOptions.themes.filter(x => x === 'light' || x === 'dark').length === 2;
+    this.hasDefaultThemesOnly =
+      this.themeOptions.themes.length === 2 && this.themeOptions.themes.filter((x) => x === 'light' || x === 'dark').length === 2;
   }
 
   protected get themes(): string[] {

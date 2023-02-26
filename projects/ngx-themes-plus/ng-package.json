@@ -3,8 +3,6 @@
   "dest": "../../dist/ngx-themes-plus",
   "lib": {
     "entryFile": "src/public-api.ts",
-    "styleIncludePaths": [
-      "./**/*.scss"
-    ]
+    "styleIncludePaths": ["./**/*.scss"]
   }
 }

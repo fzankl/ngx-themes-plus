@@ -24,14 +24,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes),
-    ThemesModule.forRoot()
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, RouterModule.forRoot(routes), ThemesModule.forRoot()],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

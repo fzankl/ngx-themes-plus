@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { MountConfig } from 'cypress/angular';
 import { Observable, Subject } from 'rxjs';
 
-import { ThemeOptions } from '../../models'
-import { LocalStorageReferenceService, LocalStorageService } from '../../services'
+import { ThemeOptions } from '../../models';
+import { LocalStorageReferenceService, LocalStorageService } from '../../services';
 import { ThemeProviderComponent, ThemeSwitcherComponent } from '../../components';
 
 @Component({
@@ -54,7 +54,7 @@ describe('ThemeSwitcherComponent', () => {
     cy.mount(ThemeSwitcherComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -75,7 +75,7 @@ describe('ThemeSwitcherComponent', () => {
     cy.mount(ThemeSwitcherComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -93,7 +93,7 @@ describe('ThemeSwitcherComponent', () => {
     cy.mount(ThemeSwitcherComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeOptions,
           useValue: options

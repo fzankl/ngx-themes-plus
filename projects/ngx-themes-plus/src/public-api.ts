@@ -12,19 +12,9 @@ export * from './lib/directives/theme.directive';
 export * from './lib/models/theme-options';
 
 @NgModule({
-  declarations: [
-    ThemeProviderComponent,
-    ThemeSwitcherComponent,
-    ThemeDirective,
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    ThemeProviderComponent,
-    ThemeSwitcherComponent,
-    ThemeDirective
-  ]
+  declarations: [ThemeProviderComponent, ThemeSwitcherComponent, ThemeDirective],
+  imports: [CommonModule],
+  exports: [ThemeProviderComponent, ThemeSwitcherComponent, ThemeDirective]
 })
 export class ThemesModule {
   public static forRoot(options: ThemeOptions = new ThemeOptions()): ModuleWithProviders<ThemesModule> {
@@ -34,6 +24,7 @@ export class ThemesModule {
         LocalStorageService,
         {
           provide: LocalStorageReferenceService,
+          /* eslint-disable-next-line @typescript-eslint/ban-types */
           useFactory: (PLATFORM_ID: Object) => {
             return isPlatformBrowser(PLATFORM_ID) ? new LocalStorageReferenceService() : null;
           },
@@ -44,6 +35,6 @@ export class ThemesModule {
           useValue: options
         }
       ]
-    }
+    };
   }
 }

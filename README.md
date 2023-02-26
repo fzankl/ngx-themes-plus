@@ -169,7 +169,7 @@ A second possibility is to set the value of the property `forcedTheme` via templ
 ```js
 /*
  * The way how you enforce a specific theme depends upon 
- * the possibilities of you application.
+ * the possibilities of your application.
  * The `AppConfigService` is just a kind of placeholder 
  * for any application specific logic. 
  */

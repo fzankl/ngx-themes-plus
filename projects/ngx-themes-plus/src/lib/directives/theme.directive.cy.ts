@@ -1,10 +1,10 @@
-import { Component } from "@angular/core";
-import { MountConfig } from "cypress/angular";
-import { Observable, Subject } from "rxjs";
+import { Component } from '@angular/core';
+import { MountConfig } from 'cypress/angular';
+import { Observable, Subject } from 'rxjs';
 
 import { ThemeDirective } from './theme.directive';
-import { ThemeProviderComponent } from "../components";
-import { LocalStorageReferenceService, LocalStorageService } from "../services";
+import { ThemeProviderComponent } from '../components';
+import { LocalStorageReferenceService, LocalStorageService } from '../services';
 
 @Component({
   selector: 'theme-provider',
@@ -14,7 +14,7 @@ class MockThemeProviderComponent {
   public themeChanged$: Observable<string>;
 
   private themeChanged: Subject<string> = new Subject();
-  private currentTheme: string = '';
+  private currentTheme = '';
 
   constructor() {
     this.themeChanged$ = this.themeChanged.asObservable();
@@ -38,17 +38,14 @@ describe('Theme directive only', () => {
 
   const config: MountConfig<TestComponent> = {
     declarations: [ThemeDirective, TestComponent],
-    providers: [
-      LocalStorageService,
-      LocalStorageReferenceService
-    ]
+    providers: [LocalStorageService, LocalStorageReferenceService]
   };
 
   it('should mount', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useClass: MockThemeProviderComponent
@@ -64,7 +61,7 @@ describe('Theme directive only', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -82,7 +79,7 @@ describe('Theme directive only', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -103,17 +100,14 @@ describe('Theme directive only as array', () => {
 
   const config: MountConfig<TestComponent> = {
     declarations: [ThemeDirective, TestComponent],
-    providers: [
-      LocalStorageService,
-      LocalStorageReferenceService
-    ]
+    providers: [LocalStorageService, LocalStorageReferenceService]
   };
 
   it('should mount', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useClass: MockThemeProviderComponent
@@ -129,7 +123,7 @@ describe('Theme directive only as array', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -147,7 +141,7 @@ describe('Theme directive only as array', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -168,17 +162,14 @@ describe('Theme directive except', () => {
 
   const config: MountConfig<TestComponent> = {
     declarations: [ThemeDirective, TestComponent],
-    providers: [
-      LocalStorageService,
-      LocalStorageReferenceService
-    ]
+    providers: [LocalStorageService, LocalStorageReferenceService]
   };
 
   it('should mount', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useClass: MockThemeProviderComponent
@@ -194,7 +185,7 @@ describe('Theme directive except', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -212,7 +203,7 @@ describe('Theme directive except', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -233,17 +224,14 @@ describe('Theme directive except as array', () => {
 
   const config: MountConfig<TestComponent> = {
     declarations: [ThemeDirective, TestComponent],
-    providers: [
-      LocalStorageService,
-      LocalStorageReferenceService
-    ]
+    providers: [LocalStorageService, LocalStorageReferenceService]
   };
 
   it('should mount', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useClass: MockThemeProviderComponent
@@ -259,7 +247,7 @@ describe('Theme directive except as array', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -277,7 +265,7 @@ describe('Theme directive except as array', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
-        ...config.providers ?? [],
+        ...(config.providers ?? []),
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider

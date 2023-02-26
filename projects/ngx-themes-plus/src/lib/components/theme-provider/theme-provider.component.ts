@@ -1,13 +1,11 @@
-import { Component,Input, OnDestroy } from '@angular/core';
-import { filter, Observable, Subject, Subscription } from 'rxjs';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { filter, fromEvent, Observable, Subject, Subscription } from 'rxjs';
 
 import { ThemeOptions } from '../../models';
 import { LocalStorageService } from '../../services';
 
-/**
- * Color schemes supported by the browser.
- */
 const colorSchemes = ['light', 'dark'];
+const mediaQuery = '(prefers-color-scheme: dark)';
 
 @Component({
   selector: 'theme-provider',
@@ -15,22 +13,18 @@ const colorSchemes = ['light', 'dark'];
 })
 export class ThemeProviderComponent implements OnDestroy {
   /** @internal */
-  public hasForcedTheme: boolean = false;
+  public hasForcedTheme = false;
   public themeChanged$: Observable<string>;
 
-  private currentTheme: string = '';
+  private currentTheme = '';
   private storageSubscription?: Subscription;
+  private mediaQuerySubscription?: Subscription;
   private themeChanged: Subject<string> = new Subject();
 
-  constructor(
-    private readonly localStorageService: LocalStorageService,
-    private readonly options: ThemeOptions) {
-
+  constructor(private readonly localStorageService: LocalStorageService, private readonly options: ThemeOptions) {
     this.themeChanged$ = this.themeChanged.asObservable();
 
-    this.storageSubscription = this.localStorageService.storage$.pipe(
-      filter(() => this.options !== undefined)
-    ).subscribe({
+    this.storageSubscription = this.localStorageService.storage$.pipe(filter(() => this.options !== undefined)).subscribe({
       next: (item) => {
         if (item?.key === this.options.storageKey) {
           const theme = item.value || this.options.defaultTheme;
@@ -38,6 +32,16 @@ export class ThemeProviderComponent implements OnDestroy {
         }
       }
     });
+
+    if (this.options.enableSystem) {
+      this.mediaQuerySubscription = fromEvent<MediaQueryList>(window.matchMedia(mediaQuery), 'change')
+        .pipe(filter(() => this.options !== undefined && !this.hasForcedTheme))
+        .subscribe({
+          next: () => {
+            this.applyTheme('system', true);
+          }
+        });
+    }
 
     const theme = this.getTheme(options.defaultTheme);
     this.applyTheme(theme, true);
@@ -47,6 +51,11 @@ export class ThemeProviderComponent implements OnDestroy {
     if (this.storageSubscription) {
       this.storageSubscription.unsubscribe();
       this.storageSubscription = undefined;
+    }
+
+    if (this.mediaQuerySubscription) {
+      this.mediaQuerySubscription.unsubscribe();
+      this.mediaQuerySubscription = undefined;
     }
 
     this.themeChanged.complete();
@@ -77,7 +86,7 @@ export class ThemeProviderComponent implements OnDestroy {
   }
 
   /** @internal */
-  public applyTheme(theme: string, shouldPersist: boolean = true): void {
+  public applyTheme(theme: string, shouldPersist = true): void {
     let resolved = theme;
 
     if (!resolved) {
@@ -85,24 +94,24 @@ export class ThemeProviderComponent implements OnDestroy {
     }
 
     if (theme === 'system' && this.options.enableSystem) {
-      resolved = this.getSystemTheme()
+      resolved = this.getSystemTheme();
     }
 
     const name = resolved;
     const attrs = this.options.themes;
-    const doc = document.documentElement
+    const doc = document.documentElement;
 
     if (this.options.attribute === 'class') {
-      doc.classList.remove(...attrs)
+      doc.classList.remove(...attrs);
 
       if (name) {
-        doc.classList.add(name)
+        doc.classList.add(name);
       }
     } else {
       if (name) {
-        doc.setAttribute(this.options.attribute, name)
+        doc.setAttribute(this.options.attribute, name);
       } else {
-        doc.removeAttribute(this.options.attribute)
+        doc.removeAttribute(this.options.attribute);
       }
     }
 
@@ -117,13 +126,12 @@ export class ThemeProviderComponent implements OnDestroy {
       }
     }
 
-    this.setTheme(resolved, shouldPersist);
+    this.setTheme(theme, shouldPersist);
+    this.currentTheme = resolved;
+    this.themeChanged?.next(resolved);
   }
 
   private setTheme(theme: string, shouldPersist: boolean): void {
-    this.currentTheme = theme;
-    this.themeChanged?.next(theme);
-
     if (shouldPersist) {
       this.localStorageService.setItem(this.options.storageKey, theme);
     }
@@ -131,12 +139,12 @@ export class ThemeProviderComponent implements OnDestroy {
 
   private getTheme(fallback: string): string {
     const theme = localStorage.getItem(this.options.storageKey) || undefined;
-    return theme || fallback
+    return theme || fallback;
   }
 
   private getSystemTheme(e?: MediaQueryList | MediaQueryListEvent): string {
     if (!e) {
-      e = window.matchMedia('(prefers-color-scheme: dark)');
+      e = window.matchMedia(mediaQuery);
     }
 
     const isDark = e.matches;

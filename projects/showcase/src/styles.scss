@@ -1,27 +1,25 @@
 :root {
   /* Your default theme */
-  --background: #F5F5F5;
-  --foreground: #27272A;
-
-  --primary: #84CC16;
+  --background: #f5f5f5;
+  --foreground: #27272a;
+  --primary: #84cc16;
 }
 
 [data-theme="dark"] {
-  --background: #27272A;
+  --background: #27272a;
   --foreground: #f6f4e6;
-
-  --primary: #84CC16;
+  --primary: #84cc16;
 }
 
 body {
   background-color: var(--background);
-  font-family: Calibri, 'Trebuchet MS', sans-serif
+  font-family: Calibri, "Trebuchet MS", sans-serif;
 }
 
 .wrapper {
+  left: 50%;
   position: absolute;
   top: 50%;
-  left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
@@ -30,20 +28,20 @@ nav {
   margin-bottom: 4rem;
 
   .menu {
-    text-align: center;
     margin-bottom: 1.5rem;
+    text-align: center;
 
     a {
       color: var(--foreground);
-      text-decoration: none;
-      font-size: 1.2em;
-      text-transform: uppercase;
-      font-weight: 500;
       display: inline-block;
-      width: 120px;
+      font-size: 1.2em;
+      font-weight: 500;
+      margin-top: 0.75em;
+      text-decoration: none;
+      text-transform: uppercase;
       -webkit-transition: all 0.2s ease-in-out;
       transition: all 0.2s ease-in-out;
-      margin-top: 0.75em;
+      width: 120px;
 
       &:hover {
         color: var(--primary);

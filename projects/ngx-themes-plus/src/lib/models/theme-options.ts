@@ -2,12 +2,12 @@ export class ThemeOptions {
   /**
    * Key used to store theme setting in localStorage
    */
-  public storageKey: string = 'theme';
+  public storageKey = 'theme';
 
   /**
    * Whether to switch between dark and light based on prefers-color-scheme
    */
-  public enableSystem: boolean = true;
+  public enableSystem = true;
 
   /**
    * Whether to indicate to browsers which color scheme is used (dark or light)

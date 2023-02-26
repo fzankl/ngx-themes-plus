@@ -1,7 +1,5 @@
-
-import { Injectable, OnDestroy } from '@angular/core'
-
-import { BehaviorSubject } from "rxjs";
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface StorageIem {
   key: string;
@@ -17,21 +15,30 @@ export class LocalStorageReferenceService {
 
 @Injectable()
 export class LocalStorageService implements OnDestroy {
-  private localStorage: Storage;
+  public storage$: Observable<StorageIem | null>;
 
+  private localStorage: Storage;
   private _storage$ = new BehaviorSubject<StorageIem | null>(null);
-  public storage$ = this._storage$.asObservable();
 
   constructor(localStorageRefService: LocalStorageReferenceService) {
+    this.storage$ = this._storage$.asObservable();
     this.localStorage = localStorageRefService.localStorage;
 
     if (window.addEventListener) {
-      window.addEventListener("storage", this.handleStorageUpdate.bind(this), false);
+      window.addEventListener('storage', this.handleStorageUpdate.bind(this), false);
     }
   }
 
   public ngOnDestroy(): void {
-    window.removeEventListener("storage", this.handleStorageUpdate.bind(this), false);
+    window.removeEventListener('storage', this.handleStorageUpdate.bind(this), false);
+  }
+
+  public getItem(key: string): string | null {
+    return this.localStorage.getItem(key);
+  }
+
+  public setItem(key: string, value: string): void {
+    this.localStorage.setItem(key, value);
   }
 
   private handleStorageUpdate(e: StorageEvent): void {
@@ -43,13 +50,5 @@ export class LocalStorageService implements OnDestroy {
       key: e.key,
       value: e.newValue
     });
-  }
-
-  public getItem(key: string): string | null {
-    return this.localStorage.getItem(key);
-  }
-
-  public setItem(key: string, value: string): void {
-    this.localStorage.setItem(key, value);
   }
 }
