@@ -48,6 +48,7 @@ describe('Theme directive only', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
+        ...config.providers ?? [],
         {
           provide: ThemeProviderComponent,
           useClass: MockThemeProviderComponent
@@ -63,6 +64,7 @@ describe('Theme directive only', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
+        ...config.providers ?? [],
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -80,6 +82,7 @@ describe('Theme directive only', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
+        ...config.providers ?? [],
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -110,6 +113,7 @@ describe('Theme directive only as array', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
+        ...config.providers ?? [],
         {
           provide: ThemeProviderComponent,
           useClass: MockThemeProviderComponent
@@ -125,6 +129,7 @@ describe('Theme directive only as array', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
+        ...config.providers ?? [],
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -142,6 +147,7 @@ describe('Theme directive only as array', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
+        ...config.providers ?? [],
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -172,6 +178,7 @@ describe('Theme directive except', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
+        ...config.providers ?? [],
         {
           provide: ThemeProviderComponent,
           useClass: MockThemeProviderComponent
@@ -187,6 +194,7 @@ describe('Theme directive except', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
+        ...config.providers ?? [],
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -204,6 +212,7 @@ describe('Theme directive except', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
+        ...config.providers ?? [],
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -234,6 +243,7 @@ describe('Theme directive except as array', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
+        ...config.providers ?? [],
         {
           provide: ThemeProviderComponent,
           useClass: MockThemeProviderComponent
@@ -249,6 +259,7 @@ describe('Theme directive except as array', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
+        ...config.providers ?? [],
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider
@@ -266,6 +277,7 @@ describe('Theme directive except as array', () => {
     cy.mount(TestComponent, {
       ...config,
       providers: [
+        ...config.providers ?? [],
         {
           provide: ThemeProviderComponent,
           useValue: themeProvider

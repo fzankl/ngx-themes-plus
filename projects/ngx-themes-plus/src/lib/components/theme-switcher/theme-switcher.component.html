@@ -1,38 +1,41 @@
 <button
-  (click)="setTheme(currentTheme === 'dark' ? 'light' : 'dark')"
-  class="d-flex align-items-center justify-center w-12 h-12 transition-all duration-150 ease-in rounded-sm focus:outline-none group bg-transparent outline-none"
+  (click)="hasDefaultThemesOnly ? setTheme(currentTheme === 'dark' ? 'light' : 'dark') : toggleThemeSelector()"
   [disabled]="hasForcedTheme"
 >
-  <ng-container *ngIf="currentTheme === 'dark'">
-    <svg
-      id="darkIcon"
-      className="w-6 h-6 transition-all duration-150 ease-in-out dark:flex dark:opacity-50 dark:group-hover:opacity-100 dark:text-white"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-      />
+  <ng-container *ngIf="hasDefaultThemesOnly && currentTheme === 'dark'">
+    <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
     </svg>
   </ng-container>
-  <ng-container *ngIf="currentTheme === 'light'">
-    <svg
-      id="lightIcon"
-      className="w-6 h-6 transition-all duration-150 ease-in-out flex text-mid/50 group-hover:text-dark"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-      />
+
+  <ng-container *ngIf="hasDefaultThemesOnly && currentTheme === 'light'">
+    <svg id="lightIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+  </ng-container>
+
+  <ng-container *ngIf="!hasDefaultThemesOnly">
+    <svg id="brushIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M18.67,21.969
+        c-2.063,0.037-3.855-1.184-4.169-3.287c-0.045-0.301-0.056-0.646-0.056-0.646c-0.324-0.036-0.653-0.115-0.977-0.238
+        c-1.063-0.404-1.821-1.348-2.556-2.178c-2.106-2.373-4.223-4.913-5.983-7.56C4.039,6.72,3.147,5.38,2.257,4.041
+        c-0.249-0.374-0.543-0.743-0.756-1.14C1.31,2.543,1.319,2.105,1.772,1.971c0.453-0.135,0.989,0.228,1.33,0.49
+        c3.746,2.789,7.492,5.578,11.238,8.367c1.55,1.154,3.239,2.387,3.203,4.592c-0.001,0.064,0.275,0.218,0.73,0.416
+        c1.279,0.559,1.467,1.492,2.098,2.577c0.594,1.026,1.693,0.596,2.232-0.276C22.383,20.195,20.842,21.932,18.67,21.969 M14.445,18.035c0,0,1.07-0.41,1.836-1.082
+        c0.862-0.757,1.262-1.533,1.262-1.533"/>
     </svg>
   </ng-container>
 </button>
+
+<div
+  class="theme-selector"
+  [ngClass]="{ 'visible': isThemeSelectorVisible }"
+  data-direction="left"
+>
+  <span
+    *ngFor="let theme of themes"
+    class="theme-selector-button"
+    [attr.data-theme]="theme"
+    (click)="setTheme(theme)"
+  ></span>
+</div>
