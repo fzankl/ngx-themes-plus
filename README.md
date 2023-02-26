@@ -78,11 +78,10 @@ That's it, your Angular app fully supports themes, including System preference w
 
 ngx-themes-plus supports switching themes using the integrated `theme-switcher` component. You can use it as easy as the parent component with an additional line of code.
 
-![Integrated theme switcher](https://user-images.githubusercontent.com/44210522/221419136-c59c9131-2488-4f26-9ae9-154e0a4708e9.png)
+![Integrated theme switcher](https://user-images.githubusercontent.com/44210522/221420926-d86537a6-7428-4f42-a407-4455135b0102.png#gh-light-mode-only)
+![Integrated theme switcher](https://user-images.githubusercontent.com/44210522/221420928-f29c8b48-eddd-4d03-9742-31f424a5eb31.png#gh-dark-mode-only)
 
-When using the two default themes `light` and `dark` the `theme-switcher` uses some default styles icons.
-
-The following snippet shows the simplest implementation when using the default themes:
+When using the two default themes `light` and `dark` the `theme-switcher` uses some default icons. The following snippet shows the simplest implementation when using the default themes:
 
 ```html
 <theme-provider>
@@ -90,7 +89,7 @@ The following snippet shows the simplest implementation when using the default t
 </theme-provider>
 ```
 
-When your application requires additional colors and themes you can extend the themes via the options during bootstrapping.
+When your application requires additional colors you can extend the themes via the options during bootstrapping.
 
 ```js
 const options = new ThemeOptions();
