@@ -1,12 +1,13 @@
 {
   "name": "ngx-themes-plus",
   "version": "1.0.0",
-  "description": "Theme support in your Angular app.",
+  "description": "Perfect Angular theme support in two lines of code.",
   "keywords": [
     "themes",
     "styles",
-    "dark mode",
-    "color scheme"
+    "dark-mode",
+    "color-scheme",
+    "theme-switcher"
   ],
   "author": "Fabian Zankl",
   "license": "MIT",

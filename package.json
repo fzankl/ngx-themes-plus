@@ -1,18 +1,19 @@
 {
   "name": "ngx-themes-plus",
   "version": "1.0.0",
-  "description": "Theme support in your Angular app.",
+  "description": "Perfect Angular theme support in two lines of code.",
   "keywords": [
     "themes",
     "styles",
-    "dark mode",
-    "color scheme"
+    "dark-mode",
+    "color-scheme",
+    "theme-switcher"
   ],
   "author": "Fabian Zankl",
   "license": "MIT",
   "scripts": {
     "clean": "rimraf dist",
-    "start": "run-p lib:watch showcase:start-waiton",
+    "start": "npm run clean && run-p lib:watch showcase:start-waiton",
     "lint": "run-p lib:lint showcase:lint",
     "test": "run-p lib:test",
     "prepare": "npm run clean",

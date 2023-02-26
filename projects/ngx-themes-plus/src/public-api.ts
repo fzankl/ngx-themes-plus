@@ -2,24 +2,28 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ModuleWithProviders, NgModule, PLATFORM_ID } from '@angular/core';
 
 import { ThemeProviderComponent, ThemeSwitcherComponent } from './lib/components';
+import { ThemeDirective } from './lib/directives';
 import { ThemeOptions } from './lib/models';
 import { LocalStorageReferenceService, LocalStorageService } from './lib/services';
 
 export * from './lib/components/theme-provider/theme-provider.component';
 export * from './lib/components/theme-switcher/theme-switcher.component';
+export * from './lib/directives/theme.directive';
 export * from './lib/models/theme-options';
 
 @NgModule({
   declarations: [
     ThemeProviderComponent,
-    ThemeSwitcherComponent
+    ThemeSwitcherComponent,
+    ThemeDirective,
   ],
   imports: [
     CommonModule
   ],
   exports: [
     ThemeProviderComponent,
-    ThemeSwitcherComponent
+    ThemeSwitcherComponent,
+    ThemeDirective
   ]
 })
 export class ThemesModule {

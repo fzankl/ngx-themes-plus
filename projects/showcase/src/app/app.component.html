@@ -1,5 +1,10 @@
-<theme-provider [forcedTheme]="forcedTheme">
+<theme-provider>
   <div class="wrapper">
+    <div class="logo">
+      <img *ngxThemesPlusOnly="'dark'" alt="ngx-themes-plus logo" src="https://user-images.githubusercontent.com/44210522/221350807-dbf550f8-cdd0-43fc-be16-ee70b1167302.svg" />
+      <img *ngxThemesPlusExcept="'dark'" alt="ngx-themes-plus logo" src="https://user-images.githubusercontent.com/44210522/221350810-18a2f0ca-53d8-4752-9f6f-49563acec44e.svg" />
+    </div>
+
     <nav>
       <div class="menu">
         <a [routerLink]="['/']">Default</a>

@@ -1,5 +1,5 @@
 import { Component,Input, OnDestroy } from '@angular/core';
-import { filter, Subject, takeUntil } from 'rxjs';
+import { filter, Observable, Subject, Subscription } from 'rxjs';
 
 import { ThemeOptions } from '../../models';
 import { LocalStorageService } from '../../services';
@@ -16,16 +16,19 @@ const colorSchemes = ['light', 'dark'];
 export class ThemeProviderComponent implements OnDestroy {
   /** @internal */
   public hasForcedTheme: boolean = false;
+  public themeChanged$: Observable<string>;
 
   private currentTheme: string = '';
-  private destroyed$: Subject<unknown> = new Subject();
+  private storageSubscription?: Subscription;
+  private themeChanged: Subject<string> = new Subject();
 
   constructor(
     private readonly localStorageService: LocalStorageService,
     private readonly options: ThemeOptions) {
 
-    this.localStorageService.storage$.pipe(
-      takeUntil(this.destroyed$),
+    this.themeChanged$ = this.themeChanged.asObservable();
+
+    this.storageSubscription = this.localStorageService.storage$.pipe(
       filter(() => this.options !== undefined)
     ).subscribe({
       next: (item) => {
@@ -41,8 +44,12 @@ export class ThemeProviderComponent implements OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.destroyed$.next(undefined);
-    this.destroyed$.complete();
+    if (this.storageSubscription) {
+      this.storageSubscription.unsubscribe();
+      this.storageSubscription = undefined;
+    }
+
+    this.themeChanged.complete();
   }
 
   /**
@@ -113,6 +120,7 @@ export class ThemeProviderComponent implements OnDestroy {
 
   private setTheme(theme: string, shouldPersist: boolean): void {
     this.currentTheme = theme;
+    this.themeChanged?.next(theme);
 
     if (shouldPersist) {
       this.localStorageService.setItem(this.options.storageKey, theme);
