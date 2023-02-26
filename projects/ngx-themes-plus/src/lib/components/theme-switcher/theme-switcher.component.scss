@@ -1,55 +1,76 @@
-.d-flex {
+$gray: #CECECE;
+$white: #FFFFFF;
+
+:host {
   display: flex;
-}
-
-.align-items-center {
   align-items: center;
-}
-
-.ease-in {
-  transition-timing-function: cubic-bezier(.4,0,1,1);
-}
-.duration-150 {
-  transition-duration: .15s;
-}
-.transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-  transition-duration: .15s;
-}
-
-.rounded-sm {
-  border-radius: .125rem;
-}
-
-.outline-none {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
-.w-12 {
-  width: 3rem;
-}
-
-.h-12 {
-  height: 3rem;
-}
-
-.bg-transparent {
-  background: transparent;
-}
-
-[role=button], button {
-  cursor: pointer;
-  border: 0;
-  margin: auto;
+  justify-content: center;
+  position: relative;
 }
 
 button {
+  cursor: pointer;
+  border: 0;
+  margin: auto;
+  padding: 0;
+  width: 1.7rem;
+  height: 1.7rem;
+  background: transparent;
   -webkit-tap-highlight-color: transparent;
+
+  &:disabled,
+  [disabled] {
+    cursor: not-allowed;
+  }
 }
 
-button:disabled,
-button[disabled]{
-  cursor: not-allowed;
+.theme-selector {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  visibility: collapse;
+  opacity: 0;
+  padding: 10px;
+  width: 90px;
+  background-color: $white;
+  transition: all 0.25s cubic-bezier(0, 0, 0.2, 1);
+  border: 1px solid $gray;
+  border-radius: 8px;
+  z-index: 4;
+  top: calc(100% + 1.7rem + 0.3rem);
+  left: 50%;
+  transform: translate3d(-50%, -15px, 0);
+
+  &:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -0.5em;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    border-style: solid;
+    border-width: 0 0.5em 0.5em 0.5em;
+    border-color: transparent transparent $white transparent;
+    -webkit-filter: drop-shadow(1px 2px 1px $gray);
+    filter: drop-shadow(1px -1px 1px $gray);
+  }
+
+  &.visible {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.theme-selector-button {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 100%;
+  border: 1px solid $gray;
+  background-color: var(--theme);
+  display: inline-block;
+  cursor: pointer;
+  margin: 4px;
 }

@@ -76,12 +76,66 @@ That's it, your Angular app fully supports themes, including System preference w
 
 ### Switch themes
 
-ngx-themes-plus supports switching themes using the integrated `theme-switcher` component. You can use it as easy as the parent component with an additional line of code. The following snippet shows the simplest implementation:
+ngx-themes-plus supports switching themes using the integrated `theme-switcher` component. You can use it as easy as the parent component with an additional line of code.
+
+![Integrated theme switcher](https://user-images.githubusercontent.com/44210522/221419136-c59c9131-2488-4f26-9ae9-154e0a4708e9.png)
+
+When using the two default themes `light` and `dark` the `theme-switcher` uses some default styles icons.
+
+The following snippet shows the simplest implementation when using the default themes:
 
 ```html
 <theme-provider>
   <theme-switcher></theme-switcher>
 </theme-provider>
+```
+
+When your application requires additional colors and themes you can extend the themes via the options during bootstrapping.
+
+```js
+const options = new ThemeOptions();
+options.themes = [...options.themes, 'yellow'];
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    ThemesModule.forRoot(options)
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+In order for the theme to be displayed correctly, the styles need to be extended. 
+**Take care about adding an additional color definition `--theme` for each theme since that color is used by the `theme-switcher` to render its selection.**
+
+```css
+:root {
+  /* Your default theme */
+  --background: #FFF;
+  --foreground: #000;
+}
+
+[data-theme="light"] {
+  --theme: #f6f4e6;
+}
+
+[data-theme="dark"] {
+  --theme: #27272A;
+
+  --background: #27272A;
+  --foreground: #f6f4e6;
+}
+
+[data-theme="yellow"] {
+  --theme: #FACC15;
+
+  --background: #E4E4E7;
+  --foreground: #18181B;
+}
 ```
 
 ### Force theme

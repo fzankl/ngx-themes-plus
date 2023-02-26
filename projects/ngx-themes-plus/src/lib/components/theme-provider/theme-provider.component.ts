@@ -112,6 +112,8 @@ export class ThemeProviderComponent implements OnDestroy {
 
       if (colorScheme) {
         doc.style.colorScheme = colorScheme;
+      } else {
+        doc.style.colorScheme = '';
       }
     }
 
