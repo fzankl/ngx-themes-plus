@@ -1,20 +1,21 @@
 :root {
   /* Your default theme */
-  --background: #f6f4e6;
-  --foreground: #000;
+  --background: #F5F5F5;
+  --foreground: #27272A;
 
-  --primary: #f1ca06;
+  --primary: #84CC16;
 }
 
 [data-theme="dark"] {
-  --background: rgb(56, 56, 56);
+  --background: #27272A;
   --foreground: #f6f4e6;
 
-  --primary: #fddb3a;
+  --primary: #84CC16;
 }
 
 body {
   background-color: var(--background);
+  font-family: Calibri, 'Trebuchet MS', sans-serif
 }
 
 .wrapper {

@@ -15,7 +15,7 @@
 
 ## Features
 
-- ✅ Perfect dark mode in 2 lines of code
+- ✅ Perfect theme/dark mode support in two lines of code
 - ✅ Support for additional customized themes
 - ✅ System setting with prefers-color-scheme
 - ✅ Themed browser UI with color-scheme
@@ -23,6 +23,7 @@
 - ✅ Sync theme across tabs and windows
 - ✅ Force pages to specific themes
 - ✅ Class or data attribute selector
+- ✅ Toggle element visibility based on selected theme
 
 Check out the [Live Example](https://fzankl.github.io/ngx-themes-plus/) to try it for yourself.
 
@@ -103,3 +104,87 @@ export class ForcedPageComponent implements OnDestroy {
   }
 }
 ```
+
+A second possibility is to set the value of the property `forcedTheme` via template binding.
+
+```html
+<theme-provider [forcedTheme]="forcedTheme">
+  <!-- Content -->
+</theme-provider>
+```
+
+```js
+/*
+ * The way how you enforce a specific theme depends upon 
+ * the possibilities of you application.
+ * The `AppConfigService` is just a kind of placeholder 
+ * for any application specific logic. 
+ */
+@Injectable({ providedIn: 'root' })
+export class AppConfigService {
+  private _forcedTheme$ = new BehaviorSubject<string | undefined>(undefined);
+  public forcedTheme$ = this._forcedTheme$.asObservable();
+
+  public forceTheme(theme?: string): void {
+    this._forcedTheme$.next(theme);
+  }
+}
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  public forcedTheme: string | undefined;
+
+  constructor(private readonly appConfigService: AppConfigService) {
+    // Set the forced theme using any application specific logic.
+    this.appConfigService.forcedTheme$.subscribe({
+      next: (theme) => this.forcedTheme = theme
+    });
+  }
+}
+
+@Component({
+  selector: 'app-page-forced'
+})
+export class ForcedPageComponent implements OnDestroy {
+  constructor(private readonly appConfigService: AppConfigService) {
+    this.appConfigService.forceTheme('dark');
+  }
+
+  public ngOnDestroy(): void {
+    this.appConfigService.forceTheme();
+  }
+}
+```
+
+### Theme specific elements
+
+It may be possible to show or hide elements depending on the selected theme, e.g. a specific logo. The library exposes the directives `ngxThemesPlusOnly` and `ngxThemesPlusExcept` that can show/hide elements of your application based on the selected theme.
+
+The directive accepts several attributes:
+
+| Attribute               | Value                   | Description|
+| :---------------------- | :---------------------- | :---------------------- |
+| `ngxThemesPlusOnly` | `[String \| String[]]` | Single or multiple themes for which the associated element should be shown |
+| `ngxThemesPlusExcept` | `[String \| String[]]` | Single or multiple themes for which the associated element should not be shown |
+
+The logo within the showcase is changed using both directives like shown in the following snippet:
+
+```html
+<div class="logo">
+  <img *ngxThemesPlusOnly="'dark'" src="path-to-the-image" />
+  <img *ngxThemesPlusExcept="'dark'" src="path-to-the-image" />
+</div>
+```
+
+## Troubleshooting
+
+If theme support does not work as expected, check that your application configuration are valid according to this documentation. If that doesn't help, please feel free to open an issue.
+
+## Changelog
+
+02/26/2023
+  * Initial release.
