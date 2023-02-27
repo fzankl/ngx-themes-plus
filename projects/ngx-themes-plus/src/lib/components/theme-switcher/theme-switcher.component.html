@@ -28,6 +28,7 @@
 </button>
 
 <div
+  *ngIf="!hasDefaultThemesOnly"
   class="theme-selector"
   [ngClass]="{ 'visible': isThemeSelectorVisible }"
   data-direction="left"

@@ -1,8 +1,8 @@
-<theme-provider>
+<tp-theme-provider>
   <div class="wrapper">
     <div class="logo">
-      <img *ngxThemesPlusOnly="'dark'" alt="ngx-themes-plus logo" src="https://user-images.githubusercontent.com/44210522/221350807-dbf550f8-cdd0-43fc-be16-ee70b1167302.svg" />
-      <img *ngxThemesPlusExcept="'dark'" alt="ngx-themes-plus logo" src="https://user-images.githubusercontent.com/44210522/221350810-18a2f0ca-53d8-4752-9f6f-49563acec44e.svg" />
+      <img *tpThemesOnly="'dark'" alt="ngx-themes-plus logo" src="https://user-images.githubusercontent.com/44210522/221350807-dbf550f8-cdd0-43fc-be16-ee70b1167302.svg" />
+      <img *tpThemesExcept="'dark'" alt="ngx-themes-plus logo" src="https://user-images.githubusercontent.com/44210522/221350810-18a2f0ca-53d8-4752-9f6f-49563acec44e.svg" />
     </div>
 
     <nav>
@@ -11,11 +11,11 @@
         <a [routerLink]="['forced']">Forced</a>
       </div>
 
-      <theme-switcher></theme-switcher>
+      <tp-theme-switcher></tp-theme-switcher>
     </nav>
 
     <main>
       <router-outlet></router-outlet>
     </main>
   </div>
-</theme-provider>
+</tp-theme-provider>

@@ -7,7 +7,7 @@ import { LocalStorageReferenceService, LocalStorageService } from '../../service
 import { ThemeProviderComponent, ThemeSwitcherComponent } from '../../components';
 
 @Component({
-  selector: 'theme-provider',
+  selector: 'tp-theme-provider',
   template: '<ng-content></ng-content>'
 })
 class MockThemeProviderComponent {
@@ -44,7 +44,7 @@ describe('ThemeSwitcherComponent', () => {
   };
 
   it('should mount', () => {
-    cy.mount('<theme-switcher></theme-switcher>', config);
+    cy.mount('<tp-theme-switcher></tp-theme-switcher>', config);
   });
 
   it('should toogle icon when switching between light and dark mode', () => {

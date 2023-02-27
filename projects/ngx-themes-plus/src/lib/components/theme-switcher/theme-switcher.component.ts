@@ -4,7 +4,7 @@ import { ThemeOptions } from '../../models';
 import { ThemeProviderComponent } from '..';
 
 @Component({
-  selector: 'theme-switcher',
+  selector: 'tp-theme-switcher',
   templateUrl: 'theme-switcher.component.html',
   styleUrls: ['theme-switcher.component.scss']
 })

@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { ThemeProviderComponent } from '../components/theme-provider/theme-provider.component';
 
 @Directive({
-  selector: '[ngxThemesPlusOnly],[ngxThemesPlusExcept]'
+  selector: '[tpThemesOnly],[tpThemesExcept]'
 })
 export class ThemeDirective implements OnInit, OnDestroy {
   private themesExcept?: string | string[];
@@ -18,13 +18,13 @@ export class ThemeDirective implements OnInit, OnDestroy {
   ) {}
 
   @Input()
-  public set ngxThemesPlusOnly(value: string | string[]) {
+  public set tpThemesOnly(value: string | string[]) {
     this.themesOnly = value;
     this.updateView();
   }
 
   @Input()
-  public set ngxThemesPlusExcept(value: string | string[]) {
+  public set tpThemesExcept(value: string | string[]) {
     this.themesExcept = value;
     this.updateView();
   }

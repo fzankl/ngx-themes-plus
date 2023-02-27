@@ -8,7 +8,7 @@ const colorSchemes = ['light', 'dark'];
 const mediaQuery = '(prefers-color-scheme: dark)';
 
 @Component({
-  selector: 'theme-provider',
+  selector: 'tp-theme-provider',
   template: '<ng-content></ng-content>'
 })
 export class ThemeProviderComponent implements OnDestroy {
