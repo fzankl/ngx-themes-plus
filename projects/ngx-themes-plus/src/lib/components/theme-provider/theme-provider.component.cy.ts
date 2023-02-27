@@ -20,7 +20,7 @@ describe('ThemeProviderComponent', () => {
   };
 
   it('should mount', () => {
-    cy.mount('<theme-provider></theme-provider>', config);
+    cy.mount('<tp-theme-provider></tp-theme-provider>', config);
   });
 
   it('should apply forced theme', () => {

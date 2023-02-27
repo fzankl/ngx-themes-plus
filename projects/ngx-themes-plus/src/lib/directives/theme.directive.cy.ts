@@ -7,7 +7,7 @@ import { ThemeProviderComponent } from '../components';
 import { LocalStorageReferenceService, LocalStorageService } from '../services';
 
 @Component({
-  selector: 'theme-provider',
+  selector: 'tp-theme-provider',
   template: '<ng-content></ng-content>'
 })
 class MockThemeProviderComponent {
@@ -31,8 +31,8 @@ class MockThemeProviderComponent {
 
 describe('Theme directive only', () => {
   @Component({
-    selector: 'ngx-theme-plus-test-comp',
-    template: `<div *ngxThemesPlusOnly="'dark'" data-cy="element">Test</div>`
+    selector: 'tp-test-comp',
+    template: `<div *tpThemesOnly="'dark'" data-cy="element">Test</div>`
   })
   class TestComponent {}
 
@@ -93,8 +93,8 @@ describe('Theme directive only', () => {
 
 describe('Theme directive only as array', () => {
   @Component({
-    selector: 'ngx-theme-plus-test-comp',
-    template: `<div *ngxThemesPlusOnly="['dark', 'red']" data-cy="element">Test</div>`
+    selector: 'tp-test-comp',
+    template: `<div *tpThemesOnly="['dark', 'red']" data-cy="element">Test</div>`
   })
   class TestComponent {}
 
@@ -155,8 +155,8 @@ describe('Theme directive only as array', () => {
 
 describe('Theme directive except', () => {
   @Component({
-    selector: 'ngx-theme-plus-test-comp',
-    template: `<div *ngxThemesPlusExcept="'dark'" data-cy="element">Test</div>`
+    selector: 'tp-test-comp',
+    template: `<div *tpThemesExcept="'dark'" data-cy="element">Test</div>`
   })
   class TestComponent {}
 
@@ -217,8 +217,8 @@ describe('Theme directive except', () => {
 
 describe('Theme directive except as array', () => {
   @Component({
-    selector: 'ngx-theme-plus-test-comp',
-    template: `<div *ngxThemesPlusExcept="['dark', 'red']" data-cy="element">Test</div>`
+    selector: 'tp-test-comp',
+    template: `<div *tpThemesExcept="['dark', 'red']" data-cy="element">Test</div>`
   })
   class TestComponent {}
 

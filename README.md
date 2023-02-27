@@ -23,7 +23,7 @@
 - ✅ Sync theme across tabs and windows
 - ✅ Force pages to specific themes
 - ✅ Class or data attribute selector
-- ✅ Toggle element visibility based on selected theme
+- ✅ Toggle element visibility based on a selected theme
 
 Check out the [Live Example](https://fzankl.github.io/ngx-themes-plus/) to try it for yourself.
 
@@ -54,9 +54,9 @@ export class AppModule { }
 Adding theme support takes 2 lines of code:
 
 ```html
-<theme-provider>
+<tp-theme-provider>
   <router-outlet></router-outlet>
-</theme-provider>
+</tp-theme-provider>
 ```
 
 That's it, your Angular app fully supports themes, including System preference with `prefers-color-scheme`. The theme is also immediately synced between tabs. By default, ngx-themes-plus modifies the `data-theme` attribute on the `html` element, which you can easily use to style your app:
@@ -76,7 +76,7 @@ That's it, your Angular app fully supports themes, including System preference w
 
 ### Switch themes
 
-ngx-themes-plus supports switching themes using the integrated `theme-switcher` component. You can use it as easy as the parent component with an additional line of code.
+ngx-themes-plus supports switching themes using the integrated `theme-switcher` component. You can use it as easily as the parent component with an additional line of code.
 
 ![Integrated theme switcher](https://user-images.githubusercontent.com/44210522/221420926-d86537a6-7428-4f42-a407-4455135b0102.png#gh-light-mode-only)
 ![Integrated theme switcher](https://user-images.githubusercontent.com/44210522/221420928-f29c8b48-eddd-4d03-9742-31f424a5eb31.png#gh-dark-mode-only)
@@ -84,9 +84,9 @@ ngx-themes-plus supports switching themes using the integrated `theme-switcher` 
 When using the two default themes `light` and `dark` the `theme-switcher` uses some default icons. The following snippet shows the simplest implementation when using the default themes:
 
 ```html
-<theme-provider>
-  <theme-switcher></theme-switcher>
-</theme-provider>
+<tp-theme-provider>
+  <tp-theme-switcher></tp-theme-switcher>
+</tp-theme-provider>
 ```
 
 When your application requires additional colors you can extend the themes via the options during bootstrapping.
@@ -108,8 +108,8 @@ options.themes = [...options.themes, 'yellow'];
 export class AppModule { }
 ```
 
-In order for the theme to be displayed correctly, the styles need to be extended. 
-**Take care about adding an additional color definition `--theme` for each theme since that color is used by the `theme-switcher` to render its selection.**
+For the theme to be displayed correctly, the styles need to be extended. 
+**Take care about adding the color definition `--theme` for each theme since that color is used by the `theme-switcher` to render its selection.**
 
 ```css
 :root {
@@ -139,9 +139,9 @@ In order for the theme to be displayed correctly, the styles need to be extended
 
 ### Force theme
 
-Forced theme is the right option if you like to present a page using a specific theme only. Switching themes does not have an effect.
+A forced theme is the right option if you like to present a page using a specific theme only. Switching themes does not have an effect.
 
-To force a theme on your Angular pages, simply inject the `ThemeProviderComponent` via the constructor an set the theme you like. Integrated `theme-switcher` is disabled in this case.
+To force a theme on your Angular pages, simply inject the `ThemeProviderComponent` via the constructor and set the theme you like. Integrated `theme-switcher` is disabled in this case.
 
 ```js
 @Component({
@@ -161,9 +161,9 @@ export class ForcedPageComponent implements OnDestroy {
 A second possibility is to set the value of the property `forcedTheme` via template binding.
 
 ```html
-<theme-provider [forcedTheme]="forcedTheme">
+<tp-theme-provider [forcedTheme]="forcedTheme">
   <!-- Content -->
-</theme-provider>
+</tp-theme-provider>
 ```
 
 ```js
@@ -213,31 +213,31 @@ export class ForcedPageComponent implements OnDestroy {
 }
 ```
 
-### Theme specific elements
+### Theme-specific elements
 
-It may be possible to show or hide elements depending on the selected theme, e.g. a specific logo. The library exposes the directives `ngxThemesPlusOnly` and `ngxThemesPlusExcept` that can show/hide elements of your application based on the selected theme.
+It may be possible to show or hide elements depending on the selected theme, e.g. a specific logo. The library exposes the directives `tpThemesOnly` and `tpThemesExcept` that can show/hide elements of your application based on the selected theme.
 
 The directive accepts several attributes:
 
 | Attribute               | Value                   | Description|
 | :---------------------- | :---------------------- | :---------------------- |
-| `ngxThemesPlusOnly` | `[String \| String[]]` | Single or multiple themes for which the associated element should be shown |
-| `ngxThemesPlusExcept` | `[String \| String[]]` | Single or multiple themes for which the associated element should not be shown |
+| `tpThemesOnly` | `[String \| String[]]` | Single or multiple themes for which the associated element should be shown |
+| `tpThemesExcept` | `[String \| String[]]` | Single or multiple themes for which the associated element should not be shown |
 
-The logo within the showcase is changed using both directives like shown in the following snippet:
+The logo within the showcase is changed using both directives shown in the following snippet:
 
 ```html
 <div class="logo">
-  <img *ngxThemesPlusOnly="'dark'" src="path-to-the-image" />
-  <img *ngxThemesPlusExcept="'dark'" src="path-to-the-image" />
+  <img *tpThemesOnly="'dark'" src="path-to-the-image" />
+  <img *tpThemesExcept="'dark'" src="path-to-the-image" />
 </div>
 ```
 
 ## Troubleshooting
 
-If theme support does not work as expected, check that your application configuration are valid according to this documentation. If that doesn't help, please feel free to open an issue.
+If theme support does not work as expected, check that your application configuration is valid according to this documentation. If that doesn't help, please feel free to open an issue.
 
 ## Changelog
 
-02/26/2023
+02/28/2023
   * Initial release.
