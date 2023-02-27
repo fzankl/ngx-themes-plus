@@ -1,6 +1,8 @@
 <div align="center">
-  <img src="./assets/logo_dark.svg#gh-dark-mode-only" alt="ngx-themes-plus logo" title="ngx-themes-plus" style="max-height: 175px;" />
-  <img src="./assets/logo_light.svg#gh-light-mode-only" alt="ngx-themes-plus logo" title="ngx-themes-plus" style="max-height: 175px;" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/logo_dark.svg" />
+    <img alt="Shows the ngx-themes-plus logo." title="ngx-themes-plus" src="./assets/logo_light.svg" style="max-height: 175px;" />
+  </picture>
   <p>Perfect Angular theme support in two lines of code.<br/>Support system preferences and any other themes. Integrated theme switcher.</p>
 </div>
 
@@ -78,8 +80,10 @@ That's it, your Angular app fully supports themes, including System preference w
 
 ngx-themes-plus supports switching themes using the integrated `theme-switcher` component. You can use it as easily as the parent component with an additional line of code.
 
-![Integrated theme switcher](https://user-images.githubusercontent.com/44210522/221420926-d86537a6-7428-4f42-a407-4455135b0102.png#gh-light-mode-only)
-![Integrated theme switcher](https://user-images.githubusercontent.com/44210522/221420928-f29c8b48-eddd-4d03-9742-31f424a5eb31.png#gh-dark-mode-only)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/44210522/221420928-f29c8b48-eddd-4d03-9742-31f424a5eb31.png" />
+  <img alt="Shows an example of the integrated theme switcher." title="Integrated theme switcher" src="https://user-images.githubusercontent.com/44210522/221420926-d86537a6-7428-4f42-a407-4455135b0102.png" />
+</picture>
 
 When using the two default themes `light` and `dark` the `theme-switcher` uses some default icons. The following snippet shows the simplest implementation when using the default themes:
 
