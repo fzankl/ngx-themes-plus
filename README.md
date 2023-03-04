@@ -20,6 +20,7 @@
 - ✅ Perfect theme/dark mode support in two lines of code
 - ✅ Support for additional customized themes
 - ✅ System setting with prefers-color-scheme
+- ✅ Supports [Bootstrap color modes](https://getbootstrap.com/docs/5.3/customize/color-modes/) via custom data attribute
 - ✅ Themed browser UI with color-scheme
 - ✅ Integrated theme switcher (considers custom themes as well)
 - ✅ Sync theme across tabs and windows
@@ -74,6 +75,27 @@ That's it, your Angular app fully supports themes, including System preference w
   --background: #000;
   --foreground: #FFF;
 }
+```
+
+### Integrate with Bootstrap
+
+As of version 5.3.0, Bootstrap supports different [color modes](https://getbootstrap.com/docs/5.3/customize/color-modes/). By default, a light and a dark mode are integrated. You can use all features of `ngx-themes-plus` by setting a custom `attribute` via the theme options. The next code snippet shows an example how to configure the plugin for use with Boostrap color modes.
+
+```js
+const themeOptions = new ThemeOptions();
+themeOptions.attribute = 'data-bs-theme';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    ThemesModule.forRoot(themeOptions)
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 ### Switch themes
@@ -243,5 +265,5 @@ If theme support does not work as expected, check that your application configur
 
 ## Changelog
 
-02/28/2023
+03/04/2023
   * Initial release.

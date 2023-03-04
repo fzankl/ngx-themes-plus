@@ -16,13 +16,12 @@ export class ThemeOptions {
   public enableColorScheme = true;
 
   /**
-   * HTML attribute modified based on the active theme
-   * accepts class and data-* (meaning any data attribute, data-mode, data-color, etc.)
+   * HTML attribute modified based on the active theme accepts class and data-*
    */
   public attribute = 'data-theme';
 
   /**
-   * List of theme names
+   * List of themes
    */
   public themes: string[] = ['light', 'dark'];
 
