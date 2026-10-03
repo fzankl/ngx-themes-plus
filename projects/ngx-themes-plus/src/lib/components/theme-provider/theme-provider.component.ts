@@ -9,7 +9,8 @@ const mediaQuery = '(prefers-color-scheme: dark)';
 
 @Component({
   selector: 'tp-theme-provider',
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  standalone: false
 })
 export class ThemeProviderComponent implements OnDestroy {
   /** @internal */
@@ -21,7 +22,10 @@ export class ThemeProviderComponent implements OnDestroy {
   private mediaQuerySubscription?: Subscription;
   private themeChanged: Subject<string> = new Subject();
 
-  constructor(private readonly localStorageService: LocalStorageService, private readonly options: ThemeOptions) {
+  constructor(
+    private readonly localStorageService: LocalStorageService,
+    private readonly options: ThemeOptions
+  ) {
     this.themeChanged$ = this.themeChanged.asObservable();
 
     this.storageSubscription = this.localStorageService.storage$.pipe(filter(() => this.options !== undefined)).subscribe({

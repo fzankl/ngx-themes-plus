@@ -8,7 +8,8 @@ import { ThemeProviderComponent, ThemeSwitcherComponent } from '../../components
 
 @Component({
   selector: 'tp-theme-provider',
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  standalone: false
 })
 class MockThemeProviderComponent {
   public themeChanged$: Observable<string>;

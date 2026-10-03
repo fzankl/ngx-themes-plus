@@ -24,7 +24,7 @@ export class ThemesModule {
         LocalStorageService,
         {
           provide: LocalStorageReferenceService,
-          /* eslint-disable-next-line @typescript-eslint/ban-types */
+          /* eslint-disable-next-line @typescript-eslint/no-wrapper-object-types */
           useFactory: (PLATFORM_ID: Object) => {
             return isPlatformBrowser(PLATFORM_ID) ? new LocalStorageReferenceService() : null;
           },

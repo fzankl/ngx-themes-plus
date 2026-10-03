@@ -1,3 +1,6 @@
+/// <reference types="node" />
+
+import { resolve } from 'path';
 import { defineConfig } from 'cypress';
 
 export default defineConfig({
@@ -10,10 +13,11 @@ export default defineConfig({
       bundler: 'webpack',
       options: {
         projectConfig: {
-          root: '',
-          sourceRoot: 'src',
+          root: 'projects/ngx-themes-plus',
+          sourceRoot: 'projects/ngx-themes-plus/src',
           buildOptions: {
-            tsConfig: 'cypress/tsconfig.json'
+            tsConfig: 'cypress/tsconfig.json',
+            workspaceRoot: resolve(__dirname, '../..')
           }
         }
       }

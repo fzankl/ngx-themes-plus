@@ -4,7 +4,8 @@ import { Subscription } from 'rxjs';
 import { ThemeProviderComponent } from '../components/theme-provider/theme-provider.component';
 
 @Directive({
-  selector: '[tpThemesOnly],[tpThemesExcept]'
+  selector: '[tpThemesOnly],[tpThemesExcept]',
+  standalone: false
 })
 export class ThemeDirective implements OnInit, OnDestroy {
   private themesExcept?: string | string[];
