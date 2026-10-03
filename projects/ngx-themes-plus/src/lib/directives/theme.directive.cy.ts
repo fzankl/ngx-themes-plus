@@ -8,7 +8,8 @@ import { LocalStorageReferenceService, LocalStorageService } from '../services';
 
 @Component({
   selector: 'tp-theme-provider',
-  template: '<ng-content></ng-content>'
+  template: '<ng-content></ng-content>',
+  standalone: false
 })
 class MockThemeProviderComponent {
   public themeChanged$: Observable<string>;
@@ -32,7 +33,8 @@ class MockThemeProviderComponent {
 describe('Theme directive only', () => {
   @Component({
     selector: 'tp-test-comp',
-    template: `<div *tpThemesOnly="'dark'" data-cy="element">Test</div>`
+    template: `<div *tpThemesOnly="'dark'" data-cy="element">Test</div>`,
+    standalone: false
   })
   class TestComponent {}
 
@@ -94,7 +96,8 @@ describe('Theme directive only', () => {
 describe('Theme directive only as array', () => {
   @Component({
     selector: 'tp-test-comp',
-    template: `<div *tpThemesOnly="['dark', 'red']" data-cy="element">Test</div>`
+    template: `<div *tpThemesOnly="['dark', 'red']" data-cy="element">Test</div>`,
+    standalone: false
   })
   class TestComponent {}
 
@@ -156,7 +159,8 @@ describe('Theme directive only as array', () => {
 describe('Theme directive except', () => {
   @Component({
     selector: 'tp-test-comp',
-    template: `<div *tpThemesExcept="'dark'" data-cy="element">Test</div>`
+    template: `<div *tpThemesExcept="'dark'" data-cy="element">Test</div>`,
+    standalone: false
   })
   class TestComponent {}
 
@@ -218,7 +222,8 @@ describe('Theme directive except', () => {
 describe('Theme directive except as array', () => {
   @Component({
     selector: 'tp-test-comp',
-    template: `<div *tpThemesExcept="['dark', 'red']" data-cy="element">Test</div>`
+    template: `<div *tpThemesExcept="['dark', 'red']" data-cy="element">Test</div>`,
+    standalone: false
   })
   class TestComponent {}
 

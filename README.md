@@ -36,6 +36,11 @@ Check out the [Live Example](https://fzankl.github.io/ngx-themes-plus/) to try i
 $ npm install ngx-themes-plus
 ```
 
+| ngx-themes-plus | Angular |
+| --------------- | ------- |
+| 2.x             | >= 22   |
+| 1.x             | 15 (newer versions untested, requires zone.js) |
+
 ## Use
 
 You have to add the module to the root module definition. The simplest `AppModule` looks like this:
@@ -264,6 +269,11 @@ The logo within the showcase is changed using both directives shown in the follo
 If theme support does not work as expected, check that your application configuration is valid according to this documentation. If that doesn't help, please feel free to open an issue.
 
 ## Changelog
+
+10/03/2026 (2.0.0)
+  * Updated to Angular 22.
+  * Added support for zoneless applications.
+  * **Breaking:** Requires Angular 22 or later. Use version 1.x for older Angular versions.
 
 03/04/2023
   * Initial release.
